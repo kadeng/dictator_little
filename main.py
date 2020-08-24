@@ -23,7 +23,7 @@ class MyFrame(wx.Frame):
         # Create the menubar
         menuBar = wx.MenuBar()
 
-        # and a menu 
+        # and a menu
         menu = wx.Menu()
 
         # add an item to the menu, using \tKeyName automatically
@@ -75,7 +75,7 @@ class MyFrame(wx.Frame):
         rtext.Bind(wx.EVT_MOUSE_EVENTS, self.OnMouseDown)
         rtext.Bind(wx.EVT_CHAR, self.OnKeyUp)
         rtext.SetFontScale(1.8)
-        self.dictation_text = "Hallo Lorin, das ist dein erstes Diktat."
+        self.dictation_text = """Im Sommer machten wir an einem Strand im schönen Italien Urlaub. Das Land ist bekannt für seine tausend verschiedenen Pizzen, daher hatte ich mich besonders darauf gefreut. Nachdem der Flug endlich vorbei war, hoffte ich auf ein paar aufregende Erlebnisse. Auf einer Landkarte hatte ich mir vorher schon angeschaut, wie man an den Strand kommt. Auf dem Weg dorthin lag eine verschlossene Geldkassette im Staub. Ich nahm sie mit zu meinen Eltern, die versuchten, sie aufzumachen. Nachdem ihnen das gelungen war, entdeckten wir einen Zettel mit einem besonders schönen Lied darauf. Seitdem singen wir unser Lied aus dem Land des Stiefels immer dann, wenn wir gerne wieder eine Urlaubsreise machen möchten."""
         self.endbutton.Enable(False)
         rtext.SetValue(self.dictation_text)
         # And also use a sizer to manage the size of the panel such
@@ -92,7 +92,6 @@ class MyFrame(wx.Frame):
             evt.Skip(True)
             return
         if evt.ButtonDown(1):
-            print("Mouse down")
             self.rtext.SetInsertionPointEnd()
             evt.Skip(False)
 
@@ -100,7 +99,6 @@ class MyFrame(wx.Frame):
         if not self.dictating:
             evt.Skip(True)
             return
-        print("key code %d" % (evt.GetKeyCode()))
         keycode = evt.GetKeyCode()
         # self.rtext.SetInsertionPointEnd()
         if keycode not in [314, 315, 316, 317]:
@@ -190,7 +188,7 @@ class MyFrame(wx.Frame):
 
 class MyApp(wx.App):
     def OnInit(self):
-        frame = MyFrame(None, "Simple wxPython App")
+        frame = MyFrame(None, "Dictator Little")
         self.SetTopWindow(frame)
 
         print("Print statements go to this stdout window by default.")
